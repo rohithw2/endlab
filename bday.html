@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Birthday Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Birthday Reminder</h2>
+
+<button class="btn" onclick="checkBirthday()">Check Today's Birthdays</button>
+
+<script>
+    // Add students here
+    const students = [
+        { name: "Rohith", dob: "2005-11-28" },
+        { name: "Lucky", dob: "2006-05-12" },
+        { name: "Arjun", dob: "2005-03-15" }
+    ];
+
+    function checkBirthday() {
+        const today = new Date();
+        const todayMonth = today.getMonth() + 1;
+        const todayDate = today.getDate();
+
+        let found = false;
+
+        students.forEach(student => {
+            const date = new Date(student.dob);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+
+            if (month === todayMonth && day === todayDate) {
+                alert("🎉 Today is " + student.name + "'s Birthday!");
+                found = true;
+            }
+        });
+
+        if (!found) {
+            alert("No birthdays today.");
+        }
+    }
+</script>
+
+</body>
+</html>
